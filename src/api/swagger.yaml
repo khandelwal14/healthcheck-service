@@ -1,0 +1,44 @@
+---
+swagger: "2.0"
+info:
+  description: "A NodeJS based microservice used as a RESTful interface."
+  version: "1.0.0"
+  title: "HealthCheck API"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "skhandelwal@firstrepublic.com"
+basePath: "/healthcheck/v1"
+schemes:
+- "https"
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /livestatus:
+    get:
+      tags:
+      - "status"
+      summary: "gets the status of microservice itself"
+      operationId: "getLiveStatus"
+      parameters: []
+      responses:
+        "200":
+          description: "request was successful"
+          schema:
+            $ref: "#/definitions/liveStatus"
+      x-swagger-router-controller: "Status"
+definitions:
+  liveStatus:
+    properties:
+      live:
+        type: "boolean"
+        example: true
+      liveAsOf:
+        type: "string"
+        format: "date-time"
+        example: "2017-12-07t15:12:22z"
+    example:
+      live: true
+      liveAsOf: "2017-12-07t15:12:22z"

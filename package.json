@@ -1,0 +1,21 @@
+{
+  "name": "healthcheck-service",
+  "version": "1.0.0",
+  "description": "A NodeJS based microservice used as a RESTful interface.",
+  "main": "src/app.js",
+  "scripts": {
+	"prestart": "npm install",
+	"dev": "node src/app.js"
+	"start": "node lib/app.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "swagger-tools": "0.10.1"
+  }
+}

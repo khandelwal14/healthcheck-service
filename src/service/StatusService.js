@@ -1,5 +1,7 @@
 'use strict';
 
+const moment = require("momemt");
+
 
 /**
  * gets the status of microservice itself
@@ -11,7 +13,7 @@ exports.getLiveStatus = function() {
     var examples = {};
     examples['application/json'] = {
   "live" : true,
-  "liveAsOf" : "2017-12-07t15:12:22z"
+  "liveAsOf" : momemt().utc().format("YYYY-MM-DDTHH:mm:ss") + "Z"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);

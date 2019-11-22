@@ -1,6 +1,6 @@
 'use strict';
 
-const moment = require("momemt");
+const moment = require("moment");
 
 
 /**
@@ -13,7 +13,7 @@ exports.getLiveStatus = function() {
     var examples = {};
     examples['application/json'] = {
   "live" : true,
-  "liveAsOf" : momemt().utc().format("YYYY-MM-DDTHH:mm:ss") + "Z"
+  "liveAsOf" : moment().utc().format("YYYY-MM-DDTHH:mm:ss") + "Z"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);

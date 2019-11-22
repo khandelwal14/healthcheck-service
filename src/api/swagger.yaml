@@ -8,9 +8,6 @@ info:
   contact:
     email: "skhandelwal@firstrepublic.com"
 basePath: "/healthcheck/v1"
-schemes:
-- "https"
-- "http"
 consumes:
 - "application/json"
 produces:

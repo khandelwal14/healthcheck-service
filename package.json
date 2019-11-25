@@ -16,7 +16,11 @@
   "dependencies": {
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
-    "swagger-tools": "0.10.1",
-    "moment": "2.23.0"
+    "moment": "2.23.0",
+    "serverless-http": "^2.3.0",
+    "swagger-tools": "0.10.1"
+  },
+  "devDependencies": {
+    "serverless-offline": "^5.12.0"
   }
 }

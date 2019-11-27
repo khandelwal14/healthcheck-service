@@ -10,52 +10,24 @@ const docusign = require('docusign-esign')
     ;
     
 
-exports.handler = async function(event, context, callback) {
-    console.log("Payload Recieved11" +JSON.stringify(event));
-    let parsedEventObject = JSON.parse(JSON.stringify(event));
-    console.log("parsedEventObject . "+parsedEventObject.email);
-    let body = parsedEventObject.body ? JSON.parse(parsedEventObject.body) : parsedEventObject;
-    
-    let email = body.email;
-    console.log("email . "+email);
-    console.log("About to call SendEnvelope");
-    let sendEnvResp = await sendEnvelopeController(email);
-    let responseMessage = "Document  Successfully Sent for signature :"+JSON.stringify(sendEnvResp); 
-    const response = {
-        statusCode: 200,
-        headers: {
-            "x-custom-header": "My Header Value",
-        },
-        body: {message: " Envelope Sent Successfully"}
-    };
-    callback(null, response);
-};
-
-
-
 async function sendEnvelopeController (email) {
     
     try{
-  // Fill in these constants or use query parameters of ACCESS_TOKEN, ACCOUNT_ID, USER_FULLNAME, USER_EMAIL
-  // or environment variables.
-
+  
   // Obtain an OAuth token from https://developers.docusign.com/oauth-token-generator
   const accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjY4MTg1ZmYxLTRlNTEtNGNlOS1hZjFjLTY4OTgxMjIwMzMxNyJ9.eyJUb2tlblR5cGUiOjUsIklzc3VlSW5zdGFudCI6MTU3NDg3MTE5NiwiZXhwIjoxNTc0ODk5OTk2LCJVc2VySWQiOiJmOTE3YWEwMi1hY2VjLTQwZWQtYmE1Ny0wZGNmZjhkNDFmZTIiLCJzaXRlaWQiOjEsInNjcCI6WyJzaWduYXR1cmUiLCJjbGljay5tYW5hZ2UiLCJvcmdhbml6YXRpb25fcmVhZCIsImdyb3VwX3JlYWQiLCJwZXJtaXNzaW9uX3JlYWQiLCJ1c2VyX3JlYWQiLCJ1c2VyX3dyaXRlIiwiYWNjb3VudF9yZWFkIiwiZG9tYWluX3JlYWQiLCJpZGVudGl0eV9wcm92aWRlcl9yZWFkIiwiZHRyLnJvb21zLnJlYWQiLCJkdHIucm9vbXMud3JpdGUiLCJkdHIuZG9jdW1lbnRzLnJlYWQiLCJkdHIuZG9jdW1lbnRzLndyaXRlIiwiZHRyLnByb2ZpbGUucmVhZCIsImR0ci5wcm9maWxlLndyaXRlIiwiZHRyLmNvbXBhbnkucmVhZCIsImR0ci5jb21wYW55LndyaXRlIl0sImF1ZCI6ImYwZjI3ZjBlLTg1N2QtNGE3MS1hNGRhLTMyY2VjYWUzYTk3OCIsImF6cCI6ImYwZjI3ZjBlLTg1N2QtNGE3MS1hNGRhLTMyY2VjYWUzYTk3OCIsImlzcyI6Imh0dHBzOi8vYWNjb3VudC1kLmRvY3VzaWduLmNvbS8iLCJzdWIiOiJmOTE3YWEwMi1hY2VjLTQwZWQtYmE1Ny0wZGNmZjhkNDFmZTIiLCJhbXIiOlsiaW50ZXJhY3RpdmUiXSwiYXV0aF90aW1lIjoxNTc0ODcxMTk0LCJwd2lkIjoiNjJiM2QxNDgtOTM2My00MWQyLWI0MWUtOGQ5NjVmMjMzYmJiIn0.mLw69Kv9xOwdJ1r4HjCLaANLzzxRyUxK7Nk29pxBtpWEykz5aQ0Ws2_8Aaldr7onxdel8cmAQQZk7lQ3ABaiVsW7nRcq5hnOycQpFKrgjx7qilh7QvID2gdhlZL6wNizRvsGSDsHKiYnA7blAj6XJC3mPYde-RZuisFZa2KTC0M4uPowY7zuIGYX9Bq2t4_1Uq3yJ01BBeHoAjjqH6YuG7AtodWH1AoWOzrH8GL2AJJ0IBjFo1wXJi02IhEnYXn35MDBKA3gQfQDxKaW_2ZKbG77YIc7hpFB5jDWMtVvgdQCFqXrHtewsEc_SDlnjfx0JKaai8tcAA7YmpJO7B7fug";
 
-  // Obtain your accountId from demo.docusign.com -- the account id is shown in the drop down on the
-  // upper right corner of the screen by your picture or the default picture. 
+  
   const accountId = "9492754"; 
 
   // Recipient Information:
-  const signerName = "Murtuz";
+  const signerName = "Acme";
   const signerEmail = email;
 
   // The document you wish to send. Path is relative to the root directory of this repo.
   const fileName = 'World_Wide_Corp_lorem.pdf';
 
-  ////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////
-
+  
   /**
    *  The envelope is sent to the provided email address. 
    *  One signHere tab is added.
@@ -127,11 +99,7 @@ async function sendEnvelopeController (email) {
   // Envelope has been created:
   console.log("results "+JSON.stringify(results));
   return results;
-  //if (results) {
-//    return "`<html lang="en"><body>
-  //              <h3>Envelope Created!</h3>
-    //            <p>Signer: ${signerName} &lt;${signerEmail}&gt;</p>
-      //          <p>Results</p><p><pre><code>${JSON.stringify(results, null, 4)}</code></pre></p>";
+ 
   
 }catch(error){
     console.log("Error In Send Envelpe catch "+error +JSON.stringify(error));

@@ -10,17 +10,17 @@ Command to include -
 
 EC2 setup -
 -------------
-aws configure (Access Key and secret should be configured)
-sudo yum update -y
-sudo yum install git
-sudo yum install -y docker
-sudo usermod -aG docker ec2-user (adding user to docker)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-. ~/.nvm/nvm.sh
-nvm install node
-sudo service docker start
-git clone <https://github.com/khandelwal14/healthcheck-service>
-cd to healthcheck-service folder
+1. aws configure (Access Key and secret should be configured)
+2. sudo yum update -y
+3. sudo yum install git
+4. sudo yum install -y docker
+5. sudo usermod -aG docker ec2-user (adding user to docker)
+6. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+7. . ~/.nvm/nvm.sh
+8. nvm install node
+9. sudo service docker start
+10. git clone <https://github.com/khandelwal14/healthcheck-service>
+11. cd to healthcheck-service folder
 
 Create repository/Build and push an image to the repository -
 -------------------------------------------------------------

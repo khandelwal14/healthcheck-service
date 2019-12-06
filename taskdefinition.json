@@ -1,1 +1,31 @@
-{}
+{
+   "containerDefinitions": [ 
+      { 
+         "essential": true,
+         "image": "207236964171.dkr.ecr.us-east-1.amazonaws.com/healthcheck-service:latest",
+         "logConfiguration": { 
+            "logDriver": "awslogs",
+            "options": { 
+               "awslogs-group" : "/ecs/node-task-definition",
+               "awslogs-region": "us-east-1",
+               "awslogs-stream-prefix": "ecs"
+            }
+         },
+         "name": "sample-nodejs-app",
+         "portMappings": [ 
+            { 
+               "containerPort": 3000,
+               "hostPort": 80,
+               "protocol": "tcp"
+            }
+         ]
+      }
+   ],
+   "cpu": "256",
+   "executionRoleArn": "arn:aws:iam::207236964171:role/ecsTaskExecutionRole",
+   "family": "healthcheck-service-task-definition",
+   "memory": "512",
+   "requiresCompatibilities": [ 
+       "EC2" 
+    ]
+}
